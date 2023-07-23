@@ -1,0 +1,47 @@
+{
+	"info": {
+		"_postman_id": "62b6bec9-8800-45f4-a4ad-af0f5977357f",
+		"name": "OpenweatherApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28292242"
+	},
+	"item": [
+		{
+			"name": "Get weather details of a city",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validate body of response\", ()=>{\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(\"Hyderabad\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{URL}}q=Hyderabad&limit=2&appid={{API key}}"
+			},
+			"response": []
+		}
+	]
+}
